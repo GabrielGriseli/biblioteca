@@ -16,8 +16,10 @@ class CreateLivrosTable extends Migration
         Schema::create('livros', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome', 50);
-            $table->string('autor', 50);
-            $table->string('editora', 50);
+            $table->integer('id_autor')->unsigned();
+            $table->foreign('id_autor')->references('id')->on('autores');
+            $table->integer('id_editora')->unsigned();
+            $table->foreign('id_editora')->references('id')->on('editoras');
             $table->integer('ano');
             $table->string('isbn', 20);
             $table->string('descricao', 500);
