@@ -9,7 +9,7 @@
 @section('content')
 
     <div class="box-header">
-        <h1 class="box-title">Editoras cadastrados</h1>
+        <h1 class="box-title">Usuários cadastrados</h1>
     </div>
 
     <div class="box-body">
@@ -27,17 +27,23 @@
                     <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                         <thead>
                             <tr role="row" style="background-color: #C0C0C0">
-                                <th style="width:87%">Nome</th>
-                                <th>Ações</th>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>Email</th>
+                                <th>Telefone</th>
+                                <th style="width:13%">Ações</th>
                             </tr>
                         </thead>
                 <tbody>
-                @foreach($editoras as $i)
+                @foreach($usuarios as $i)
                     <tr data-url>
                         <td>{{$i->nome}}</td>
+                        <td>{{$i->cpf}}</td>
+                        <td>{{$i->email}}</td>
+                        <td>{{$i->telefone}}</td>
                         <td>
-                            <a href="{{route('editoras.edit', ['id'=>$i->id])}}" class="btn-sm btn-success">Editar</a>
-                            <a href="{{route('editoras.destroy', ['id'=>$i->id])}}" class="btn-sm btn-danger">Remover</a>
+                            <a href="{{route('usuarios.edit', ['id'=>$i->id])}}" class="btn-sm btn-success">Editar</a>
+                            <a href="{{route('usuarios.destroy', ['id'=>$i->id])}}" class="btn-sm btn-danger">Remover</a>
                         </td>
                     </tr>
                 @endforeach
@@ -47,7 +53,7 @@
     </div>
     <br/>
     <a href="/" class="btn-sm btn-primary">Voltar</a>
-    <a href="{{route('editoras.create')}}" class="btn-sm btn-success">Novo Editora</a>
+    <a href="{{route('usuarios.create')}}" class="btn-sm btn-success">Novo Usuario</a>
     
 @stop
 

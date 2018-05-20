@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\livro;
+use App\autor;
+use App\editora;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LivroRequest;
@@ -11,7 +13,18 @@ class LivrosController extends Controller
 {
     public function index(){
       $livros = Livro::all();
-      return view('livros.index', ['livros'=>$livros]);
+
+      $vet = [];
+      if(!empty($livros)){
+        foreach($livros as $i ) {
+          $autor = Autor::find($i->id_autor);
+          $editora = Editora::find($i->id_editora);
+
+          array_push($vet, [$i, $autor, $editora]);
+        }
+      }
+
+      return view('livros.index', ['vet'=>$vet]);
     }
 
     public function create(){
@@ -27,7 +40,10 @@ class LivrosController extends Controller
 
     public function visualizar($id){
       $livro = Livro::find($id);
-      return view('livros.visualizar', ['livro'=>$livro]);
+      $autor = Autor::find($livro->id_autor);
+      $editora = Editora::find($livro->id_editora);
+
+      return view('livros.visualizar', ['livro'=>$livro, 'autor'=>$autor, 'editora'=>$editora]);
     }
 
     public function destroy($id){
@@ -37,7 +53,10 @@ class LivrosController extends Controller
   
     public function edit($id){
       $livro = Livro::find($id);
-      return view('livros.edit', compact('livro'));
+      $autor = Autor::find($livro->id_autor);
+      $editora = Editora::find($livro->id_editora);
+
+      return view('livros.edit', ['livro'=>$livro, 'autor'=>$autor, 'editora'=>$editora]);
     }
   
     public function update(LivroRequest $request, $id){

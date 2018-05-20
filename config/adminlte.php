@@ -108,27 +108,32 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        'CADASTROS',
         [
             'text' => 'Livros',
             'url'  => 'livros',
             'icon' => 'book',
         ],
+        [
+            'text' => 'Autores',
+            'url'  => 'autores',
+            'icon' => 'user',
+        ],
+        [
+            'text' => 'Editoras',
+            'url'  => 'editoras',
+            'icon' => 'leanpub',
+        ],
+        [
+            'text' => 'Usuarios',
+            'url'  => 'usuarios',
+            'icon' => 'users',
+        ],
+        
 
 
         
-        [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
+        
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',

@@ -27,18 +27,18 @@
                     <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                         <thead>
                             <tr role="row" style="background-color: #C0C0C0">
-                                <th>Nome</th>
+                                <th style="width:87%">Nome</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
                 <tbody>
                 @foreach($autores as $i)
                     <tr data-url>
-                        <td style='cursor:pointer'>
-                            <a href="{{route('autores.visualizar', ['id'=>$i->id])}}">{{$i->nome}}</a>
+                        <td>{{$i->nome}}</td>
+                        <td>
+                            <a href="{{route('autores.edit', ['id'=>$i->id])}}" class="btn-sm btn-success">Editar</a>
+                            <a href="{{route('autores.destroy', ['id'=>$i->id])}}" class="btn-sm btn-danger">Remover</a>
                         </td>
-                        <td>{{$i->autor}}</td>
-                        <td>Em contrução</td>
                     </tr>
                 @endforeach
                 </tbody>

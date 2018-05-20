@@ -20,12 +20,12 @@
                 {!! Form::text('nome', null, ['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('autor', 'Autor') !!}
-                {!! Form::text('autor', null, ['class'=>'form-control']) !!}
+                {!! Form::label('id_autor', 'Autor') !!}
+                {!! Form::select('id_autor', \App\Autor::orderBy('nome')->pluck('nome', 'id')->toArray(), null, ['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('editora', 'Editora') !!}
-                {!! Form::text('editora', null, ['class'=>'form-control']) !!}
+                {!! Form::label('id_editora', 'Editora') !!}
+                {!! Form::select('id_editora', \App\Editora::orderBy('nome')->pluck('nome', 'id')->toArray(), null, ['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('ano', 'Ano') !!}

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Livro extends Model
 {
-    protected $fillable = ['nome', 'autor', 'editora', 'ano', 'descricao', 'isbn'];
+    protected $fillable = ['nome', 'id_autor', 'id_editora', 'ano', 'descricao', 'isbn'];
 }

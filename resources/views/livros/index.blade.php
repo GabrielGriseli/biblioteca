@@ -35,15 +35,15 @@
                             </tr>
                         </thead>
                 <tbody>
-                @foreach($livros as $i)
+                @foreach($vet as $i)
                     <tr data-url>
                         <td style='cursor:pointer'>
-                            <a href="{{route('livros.visualizar', ['id'=>$i->id])}}">{{$i->nome}}</a>
+                            <a href="{{route('livros.visualizar', ['id'=>$i[0]->id])}}">{{$i[0]->nome}}</a>
                         </td>
-                        <td>{{$i->autor}}</td>
-                        <td>{{$i->editora}}</td>
-                        <td>{{$i->ano}}</td>
-                        <td>{{$i->isbn}}</td>
+                        <td>{{$i[1]->nome}}</td> <!--nome do autor-->
+                        <td>{{$i[2]->nome}}</td> <!--nome da editora-->
+                        <td>{{$i[0]->ano}}</td>
+                        <td>{{$i[0]->isbn}}</td>
                     </tr>
                 @endforeach
                 </tbody>

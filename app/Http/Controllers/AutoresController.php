@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AutorRequest;
 
-class AutorController extends Controller
+class AutoresController extends Controller
 {
     public function index(){
         $autores = Autor::all();

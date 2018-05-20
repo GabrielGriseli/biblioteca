@@ -20,11 +20,11 @@
             </div>
             <div class="form-group">
                 {!! Form::label('autor', 'Autor: ') !!}
-                {{$livro->autor}}
+                {{$autor->nome}}
             </div>
             <div class="form-group">
                 {!! Form::label('editora', 'Editora: ') !!}
-                {{$livro->editora}}
+                {{$editora->nome}}
             </div>
             <div class="form-group">
                 {!! Form::label('ano', 'Ano: ') !!}
@@ -43,6 +43,4 @@
             <a href="{{route('livros.edit', ['id'=>$livro->id])}}" class="btn-sm btn-success">Editar</a>
             <a href="{{route('livros.destroy', ['id'=>$livro->id])}}" class="btn-sm btn-danger">Remover</a>
 
-    
-          
 @stop

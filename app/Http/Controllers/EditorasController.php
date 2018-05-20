@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditoraRequest;
 
-class EditoraController extends Controller
+class EditorasController extends Controller
 {
     public function index(){
         $editoras = Editora::all();
