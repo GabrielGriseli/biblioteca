@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Closure;
 
-class IsAdmin
+class IsSuperAdmin
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,8 @@ class IsAdmin
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {   
-        
-        if (Auth::user() && Auth::user()->admin < 1){
+    {
+        if (Auth::user() && Auth::user()->admin < 2){
             return redirect('/');
         }
 
