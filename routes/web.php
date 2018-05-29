@@ -17,13 +17,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::group(['middleware' => ['auth', 'admin']], function(){
+
+    Route::get('/home', function() {
+      if (Auth::user()->admin == 0) {
+        return "view('livros.index')";
+      } else {
+        return "teste";
+      }
+    });
+  });
+
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::group(['prefix'=>'livros', 'where'=>['id'=>'[0-9]+']], function(){
+Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'livros', 'where'=>['id'=>'[0-9]+']], function(){
     Route::get('',                  ['as'=>'livros',             'uses'=>'LivrosController@index']);
     Route::get('create',            ['as'=>'livros.create',      'uses'=>'LivrosController@create']);
     Route::get('{id}/destroy',      ['as'=>'livros.destroy',     'uses'=>'LivrosController@destroy']);
