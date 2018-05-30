@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'blue',
+    'skin' => 'yellow-light',
 
     /*
     |--------------------------------------------------------------------------
@@ -126,7 +126,7 @@ return [
         ],
         [
             'text' => 'Usuarios',
-            'url'  => 'usuarios',
+            'url'  => 'users',
             'icon' => 'users',
         ],
         

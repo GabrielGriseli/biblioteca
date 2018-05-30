@@ -28,23 +28,14 @@
                         <thead>
                             <tr role="row" style="background-color: #C0C0C0">
                                 <th>Nome</th>
-                                <th>CPF</th>
-                                <th>Email</th>
-                                <th>Telefone</th>
-                                <th style="width:13%">Ações</th>
+                                <th>Grau de admin</th>
                             </tr>
                         </thead>
                 <tbody>
                 @foreach($usuarios as $i)
                     <tr data-url>
-                        <td>{{$i->nome}}</td>
-                        <td>{{$i->cpf}}</td>
-                        <td>{{$i->email}}</td>
-                        <td>{{$i->telefone}}</td>
-                        <td>
-                            <a href="{{route('usuarios.edit', ['id'=>$i->id])}}" class="btn-sm btn-success">Editar</a>
-                            <a href="{{route('usuarios.destroy', ['id'=>$i->id])}}" class="btn-sm btn-danger">Remover</a>
-                        </td>
+                        <td>{{$i->name}}</td>
+                        <td>{{$i->admin}}</td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -52,8 +43,6 @@
         </div>
     </div>
     <br/>
-    <a href="/" class="btn-sm btn-primary">Voltar</a>
-    <a href="{{route('usuarios.create')}}" class="btn-sm btn-success">Novo Usuario</a>
     
 @stop
 

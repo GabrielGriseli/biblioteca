@@ -17,8 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'livros', 'where'=>['id'=>'[0-9]+']], function(){
     Route::get('',                  ['as'=>'livros',             'uses'=>'LivrosController@index']);
     Route::get('create',            ['as'=>'livros.create',      'uses'=>'LivrosController@create']);
@@ -49,21 +47,12 @@ Route::group(['prefix'=>'editoras', 'where'=>['id'=>'[0-9]+']], function(){
     Route::get('{id}visualizar',    ['as'=>'editoras.visualizar',  'uses'=>'EditorasController@visualizar']);
 });
 
-Route::group(['prefix'=>'usuarios', 'where'=>['id'=>'[0-9]+']], function(){
-    Route::get('',                  ['as'=>'usuarios',             'uses'=>'UsuariosController@index']);
-    Route::get('create',            ['as'=>'usuarios.create',      'uses'=>'UsuariosController@create']);
-    Route::get('{id}/destroy',      ['as'=>'usuarios.destroy',     'uses'=>'UsuariosController@destroy']);
-    Route::get('{id}/edit',         ['as'=>'usuarios.edit',        'uses'=>'UsuariosController@edit']);
-    Route::put('{id}/update',       ['as'=>'usuarios.update',      'uses'=>'UsuariosController@update']);
-    Route::post('store',            ['as'=>'usuarios.store',       'uses'=>'UsuariosController@store']);
-    Route::get('{id}visualizar',    ['as'=>'usuarios.visualizar',  'uses'=>'UsuariosController@visualizar']);
-});
 
 Route::group(['prefix'=>'emprestimos', 'where'=>['id'=>'[0-9]+']], function(){
     Route::get('create',            ['as'=>'emprestimos.create',      'uses'=>'EmprestimosController@create']);
     Route::post('store',            ['as'=>'emprestimos.store',       'uses'=>'EmprestimosController@store']);
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'users', 'where'=>['id'=>'[0-9]+']], function(){
+    Route::get('',                  ['as'=>'users',             'uses'=>'UsersController@index']);
+});
