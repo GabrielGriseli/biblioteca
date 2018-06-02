@@ -26,7 +26,7 @@
                 <div class="col-sm-12">
                     <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                         <thead>
-                            <tr role="row" style="background-color: #C0C0C0">
+                            <tr role="row" style="background-color: rgb(55, 72, 80); color: white;">
                                 <th style="width:87%">Nome</th>
                                 <th>Ações</th>
                             </tr>

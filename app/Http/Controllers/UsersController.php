@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\user;
-use Illuminate\Http\Request;
+use Request;
 use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
@@ -23,5 +23,19 @@ class UsersController extends Controller
             }
             return view('users.index', ['usuarios'=>$vetUsuarios]);
         }
-      }
+    }
+
+    public function edit($id){
+        $usuario = User::find($id);
+        return view('users.edit', compact('usuario'));
+    }
+
+    public function update($id){
+
+        $usuario = User::find($id);
+        $usuario->admin = Request::input('admin');
+        $usuario->save();
+        
+        return redirect()->route('users');
+    }
 }

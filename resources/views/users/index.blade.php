@@ -26,9 +26,10 @@
                 <div class="col-sm-12">
                     <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                         <thead>
-                            <tr role="row" style="background-color: #C0C0C0">
+                            <tr role="row" style="background-color: rgb(55, 72, 80); color: white;">
                                 <th>Nome</th>
-                                <th>Grau de admin</th>
+                                <th>Grau de acesso</th>
+                                <th>Ação</th>
                             </tr>
                         </thead>
                 <tbody>
@@ -36,6 +37,7 @@
                     <tr data-url>
                         <td>{{$i->name}}</td>
                         <td>{{$i->admin}}</td>
+                        <td><a href="{{route('users.edit', ['id'=>$i->id])}}" class="btn-sm btn-success">Mudar grau de acesso</a></td>
                     </tr>
                 @endforeach
                 </tbody>

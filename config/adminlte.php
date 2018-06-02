@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'yellow-light',
+    'skin' => 'yellow',
 
     /*
     |--------------------------------------------------------------------------
@@ -128,7 +128,7 @@ return [
             'text' => 'Usuarios',
             'url'  => 'users',
             'icon' => 'users',
-            'can' => 'gate-admin',
+            'can' => 'gate-superadmin',
         ],
         
 

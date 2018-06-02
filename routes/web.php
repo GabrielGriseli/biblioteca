@@ -53,6 +53,12 @@ Route::group(['prefix'=>'editoras', 'where'=>['id'=>'[0-9]+']], function(){
     Route::get('{id}visualizar',    ['as'=>'editoras.visualizar',  'uses'=>'EditorasController@visualizar', 'middleware' => ['auth', 'superadmin']]);
 });
 
+Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'users', 'where'=>['id'=>'[0-9]+']], function(){
+    Route::get('',                          ['as'=>'users',             'uses'=>'UsersController@index']);
+    Route::get('{id}/edit',                 ['as'=>'users.edit',        'uses'=>'UsersController@edit']);
+    Route::put('{id}/update',               ['as'=>'users.update',      'uses'=>'UsersController@update']);
+});
+
 
 
 
@@ -74,7 +80,5 @@ Route::group(['middleware' => ['auth', 'superadmin'], 'prefix'=>'admin', 'where'
         Route::post('store',            ['as'=>'emprestimos.store',       'uses'=>'EmprestimosController@store']);
     });
     
-    Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'users', 'where'=>['id'=>'[0-9]+']], function(){
-        Route::get('',                  ['as'=>'users',             'uses'=>'UsersController@index']);
-    });
+    
 });
