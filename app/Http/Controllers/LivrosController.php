@@ -8,6 +8,7 @@ use App\editora;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LivroRequest;
+use Illuminate\Support\Facades\Auth;
 
 class LivrosController extends Controller
 {
@@ -24,7 +25,10 @@ class LivrosController extends Controller
         }
       }
 
-      return view('livros.index', ['vet'=>$vet]);
+      if (Auth::check() && Auth::user()->admin == 2)
+        return view('livros.index', ['vet'=>$vet]);
+      else
+        return view('livros.indexUser', ['vet'=>$vet]); 
     }
 
     public function create(){

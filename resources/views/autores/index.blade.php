@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Autor')
 
 @section('content_header')
     
@@ -46,7 +46,7 @@
         </div>
     </div>
     <br/>
-    <a href="/" class="btn-sm btn-primary">Voltar</a>
+    <a href="/home" class="btn-sm btn-primary">Voltar</a>
     <a href="{{route('autores.create')}}" class="btn-sm btn-success">Novo Autor</a>
     
 @stop

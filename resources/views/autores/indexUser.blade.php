@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Livro')
+@section('title', 'Autor')
 
 @section('content_header')
     
@@ -9,7 +9,7 @@
 @section('content')
 
     <div class="box-header">
-        <h1 class="box-title">Livros cadastrados</h1>
+        <h1 class="box-title">Autores cadastrados</h1>
     </div>
 
     <div class="box-body">
@@ -27,23 +27,18 @@
                     <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                         <thead>
                             <tr role="row" style="background-color: #C0C0C0">
-                                <th>Nome</th>
-                                <th>Autor</th>
-                                <th>Editora</th>
-                                <th>Ano</th>
-                                <th>ISBN</th>
+                                <th style="width:87%">Nome</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                 <tbody>
-                @foreach($vet as $i)
+                @foreach($autores as $i)
                     <tr data-url>
-                        <td style='cursor:pointer'>
-                            <a href="{{route('livros.visualizar', ['id'=>$i[0]->id])}}">{{$i[0]->nome}}</a>
+                        <td>{{$i->nome}}</td>
+                        <td>
+                            <a href="{{route('autores.edit', ['id'=>$i->id])}}" class="btn-sm btn-success">Editar</a>
+                            <a href="{{route('autores.destroy', ['id'=>$i->id])}}" class="btn-sm btn-danger">Remover</a>
                         </td>
-                        <td>{{$i[1]->nome}}</td> <!--nome do autor-->
-                        <td>{{$i[2]->nome}}</td> <!--nome da editora-->
-                        <td>{{$i[0]->ano}}</td>
-                        <td>{{$i[0]->isbn}}</td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -52,7 +47,6 @@
     </div>
     <br/>
     <a href="/home" class="btn-sm btn-primary">Voltar</a>
-    <a href="{{route('livros.create')}}" class="btn-sm btn-success">Novo Livro</a>
     
 @stop
 

@@ -52,7 +52,6 @@
     </div>
     <br/>
     <a href="/home" class="btn-sm btn-primary">Voltar</a>
-    <a href="{{route('livros.create')}}" class="btn-sm btn-success">Novo Livro</a>
     
 @stop
 

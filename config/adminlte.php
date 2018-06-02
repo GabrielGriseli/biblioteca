@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'βiblionTHEKA',
 
-    'title_prefix' => '',
+    'title_prefix' => 'β - ',
 
     'title_postfix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>βiblion</b>THEKA',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>β</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,7 +108,7 @@ return [
     */
 
     'menu' => [
-        'CADASTROS',
+        'MENU',
         [
             'text' => 'Livros',
             'url'  => 'livros',
@@ -128,22 +128,27 @@ return [
             'text' => 'Usuarios',
             'url'  => 'users',
             'icon' => 'users',
+            'can' => 'gate-admin',
         ],
         
 
 
         
-        
-        'ACCOUNT SETTINGS',
         [
-            'text' => 'Profile',
+            'header' => 'CONFIGURAÇÕES DE CONTA',
+            'can' => 'conf-conta'
+        ],
+        [
+            'text' => 'Perfil',
             'url'  => 'admin/settings',
             'icon' => 'user',
+            'can' => 'conf-conta',
         ],
         [
-            'text' => 'Change Password',
+            'text' => 'Trocar Senha',
             'url'  => 'admin/settings',
             'icon' => 'lock',
+            'can' => 'conf-conta',
         ],
     ],
 

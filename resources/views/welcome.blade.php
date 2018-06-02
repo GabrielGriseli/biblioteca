@@ -1,15 +1,9 @@
-@extends('adminlte::page')
-
-@section('title', 'AdminLTE')
-
-@section('content_header')
-    
-@stop
+@extends('layouts.app')
 
 @section('content')
 
-<div>
+<div align="center">
     <img src="{{ asset('regulamento-da-biblioteca-colegio-salesiano-dom-bosco-cidade-alta2.png') }}">
 </div>
-    
-@stop
+
+@endsection
