@@ -23,6 +23,7 @@ class CreateLivrosTable extends Migration
             $table->integer('ano');
             $table->string('isbn', 20);
             $table->string('descricao', 500);
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'users', 'where'=>['i
 });
 
 Route::group(['prefix'=>'emprestimos', 'where'=>['id'=>'[0-9]+']], function(){
-    Route::get('create',            ['as'=>'emprestimos.create',      'uses'=>'EmprestimosController@create',       'middleware' => ['auth', 'admin']]);
-    Route::post('store',            ['as'=>'emprestimos.store',       'uses'=>'EmprestimosController@store',        'middleware' => ['auth', 'admin']]);
+    Route::get('create',            ['as'=>'emprestimos.create',            'uses'=>'EmprestimosController@create',             'middleware' => ['auth', 'admin']]);
+    Route::get('comprovante',       ['as'=>'emprestimos.comprovante',       'uses'=>'EmprestimosController@comporvante',        'middleware' => ['auth', 'admin']]);
+    Route::post('store',            ['as'=>'emprestimos.store',             'uses'=>'EmprestimosController@store',              'middleware' => ['auth', 'admin']]);
 });
