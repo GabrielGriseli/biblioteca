@@ -130,8 +130,18 @@ return [
             'icon' => 'users',
             'can' => 'gate-superadmin',
         ],
-        
-
+        [
+            'text' => 'Empréstimo',
+            'url'  => 'emprestimos/create',
+            'icon' => 'plus',
+            'can' => 'gate-admin',
+        ],
+        [
+            'text' => 'Devolução',
+            'url'  => 'devolucao',
+            'icon' => 'minus',
+            'can' => 'gate-admin',
+        ],
 
         
         [

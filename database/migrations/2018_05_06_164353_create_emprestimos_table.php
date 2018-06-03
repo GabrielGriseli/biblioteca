@@ -15,12 +15,10 @@ class CreateEmprestimosTable extends Migration
     {
         Schema::create('emprestimos', function (Blueprint $table) {
             $table->integer('id_usuario')->unsigned();
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
+            $table->foreign('id_usuario')->references('id')->on('users');
             $table->integer('id_livro')->unsigned();
             $table->foreign('id_livro')->references('id')->on('livros');
             $table->primary(['id_usuario', 'id_livro']);
-            $table->datetime('dt_retirada');
-            $table->datetime('dt_devolucao');
             $table->timestamps();
         });
     }

@@ -29,7 +29,7 @@ Route::group(['prefix'=>'livros', 'where'=>['id'=>'[0-9]+']], function(){
     Route::get('{id}/edit',         ['as'=>'livros.edit',        'uses'=>'LivrosController@edit',           'middleware' => ['auth', 'superadmin']]);
     Route::put('{id}/update',       ['as'=>'livros.update',      'uses'=>'LivrosController@update',         'middleware' => ['auth', 'superadmin']]);
     Route::post('store',            ['as'=>'livros.store',       'uses'=>'LivrosController@store',          'middleware' => ['auth', 'superadmin']]);
-    Route::get('{id}visualizar',    ['as'=>'livros.visualizar',  'uses'=>'LivrosController@visualizar',     'middleware' => ['auth', 'superadmin']]);
+    Route::get('{id}visualizar',    ['as'=>'livros.visualizar',  'uses'=>'LivrosController@visualizar']);
 });
 
 ///autores
@@ -59,26 +59,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix'=>'users', 'where'=>['i
     Route::put('{id}/update',               ['as'=>'users.update',      'uses'=>'UsersController@update']);
 });
 
-
-
-
-
-
-
-
-
-
-Route::group(['middleware' => ['auth', 'superadmin'], 'prefix'=>'admin', 'where'=>['id'=>'[0-9]+']], function(){
-    
-
-    
-    
-    
-    
-    Route::group(['prefix'=>'emprestimos', 'where'=>['id'=>'[0-9]+']], function(){
-        Route::get('create',            ['as'=>'emprestimos.create',      'uses'=>'EmprestimosController@create']);
-        Route::post('store',            ['as'=>'emprestimos.store',       'uses'=>'EmprestimosController@store']);
-    });
-    
-    
+Route::group(['prefix'=>'emprestimos', 'where'=>['id'=>'[0-9]+']], function(){
+    Route::get('create',            ['as'=>'emprestimos.create',      'uses'=>'EmprestimosController@create',       'middleware' => ['auth', 'admin']]);
+    Route::post('store',            ['as'=>'emprestimos.store',       'uses'=>'EmprestimosController@store',        'middleware' => ['auth', 'admin']]);
 });

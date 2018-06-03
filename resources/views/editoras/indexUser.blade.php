@@ -28,17 +28,12 @@
                         <thead>
                             <tr role="row" style="background-color: rgb(55, 72, 80); color: white;">
                                 <th style="width:87%">Nome</th>
-                                <th>Ações</th>
                             </tr>
                         </thead>
                 <tbody>
                 @foreach($editoras as $i)
                     <tr data-url>
                         <td>{{$i->nome}}</td>
-                        <td>
-                            <a href="{{route('editoras.edit', ['id'=>$i->id])}}" class="btn-sm btn-success">Editar</a>
-                            <a href="{{route('editoras.destroy', ['id'=>$i->id])}}" class="btn-sm btn-danger">Remover</a>
-                        </td>
                     </tr>
                 @endforeach
                 </tbody>

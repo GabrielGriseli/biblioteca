@@ -47,7 +47,10 @@ class LivrosController extends Controller
       $autor = Autor::find($livro->id_autor);
       $editora = Editora::find($livro->id_editora);
 
-      return view('livros.visualizar', ['livro'=>$livro, 'autor'=>$autor, 'editora'=>$editora]);
+      if (Auth::check() && Auth::user()->admin == 2)
+        return view('livros.visualizar', ['livro'=>$livro, 'autor'=>$autor, 'editora'=>$editora]);
+      else
+        return view('livros.visualizarUser', ['livro'=>$livro, 'autor'=>$autor, 'editora'=>$editora]);
     }
 
     public function destroy($id){
