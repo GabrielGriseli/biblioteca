@@ -142,7 +142,18 @@ return [
             'icon' => 'minus',
             'can' => 'gate-admin',
         ],
-
+        [
+            'text' => 'Renovação',
+            'url'  => 'renovacao',
+            'icon' => 'refresh',
+            'can' => 'conf-conta',
+        ],
+        [
+            'text' => 'Configurações',
+            'url'  => 'configs/1/edit',
+            'icon' => 'cogs',
+            'can' => 'gate-superadmin',
+        ],
         
         [
             'header' => 'CONFIGURAÇÕES DE CONTA',

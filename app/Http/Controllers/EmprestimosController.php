@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\emprestimo;
 use App\user;
 use App\livro;
+use App\config;
 use Request;
 //use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -24,7 +25,8 @@ class EmprestimosController extends Controller
 
         $usuario = User::where('name', Request::input('usuario'))->first();
         $livro = Livro::where('nome', Request::input('livro'))->first();
-        $devolucao = Carbon::now()->addDays(15);
+        $dias = Config::find(1)->num_dias;
+        $devolucao = Carbon::now()->addDays($dias);
 
         $emprestimo = Emprestimo::create(array('id_usuario' => $usuario->id, 'id_livro' => $livro->id, 'devolucao'=> $devolucao));
 

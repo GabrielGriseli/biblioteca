@@ -64,3 +64,8 @@ Route::group(['prefix'=>'emprestimos', 'where'=>['id'=>'[0-9]+']], function(){
     Route::get('comprovante',       ['as'=>'emprestimos.comprovante',       'uses'=>'EmprestimosController@comporvante',        'middleware' => ['auth', 'admin']]);
     Route::post('store',            ['as'=>'emprestimos.store',             'uses'=>'EmprestimosController@store',              'middleware' => ['auth', 'admin']]);
 });
+
+Route::group(['prefix'=>'configs', 'where'=>['id'=>'[0-9]+']], function(){
+    Route::get('{id}/edit',         ['as'=>'configs.edit',        'uses'=>'ConfigsController@edit',       'middleware' => ['auth', 'superadmin']]);
+    Route::put('{id}/update',       ['as'=>'configs.update',      'uses'=>'ConfigsController@update',     'middleware' => ['auth', 'superadmin']]);
+});
