@@ -63,8 +63,8 @@
                                 <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                     <thead>
                                         <tr role="row" style="background-color: rgb(55, 72, 80); color: white;">
-                                            <th style="width:87%">Nome</th>
-                                            <th>Ação</th>
+                                            <th style="width:70%">Nome</th>
+                                            <th style="width:30%">Ação</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -72,7 +72,13 @@
                                         <tr data-url>
                                             <td>{{$i->name}}</td>
                                             <td>
-                                                <button type="button" class="btn btn-success" onclick="changeUser('{{$i->name}}')" data-dismiss="modal">Selecionar</button>
+                                                @if ($i->multa > 0)
+                                                    Dívida: {{$i->multa}}
+                                                @elseif ($i->num_livros === $config)
+                                                    Número máximo de livros: {{$i->num_livros}} / {{$config}}
+                                                @else
+                                                    <button type="button" class="btn btn-success" onclick="changeUser('{{$i->name}}')" data-dismiss="modal">Selecionar</button>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -111,8 +117,8 @@
                                 <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                     <thead>
                                         <tr role="row" style="background-color: rgb(55, 72, 80); color: white;">
-                                            <th style="width:87%">Nome</th>
-                                            <th>Ação</th>
+                                            <th style="width:70%">Nome</th>
+                                            <th style="width:30%">Ação</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -120,7 +126,11 @@
                                         <tr data-url>
                                             <td>{{$i->nome}}</td>
                                             <td>
-                                                <button type="button" class="btn btn-success" onclick="changeLivro('{{$i->nome}}')" data-dismiss="modal">Selecionar</button>
+                                                @if ($i->status === 1)
+                                                    Retirado
+                                                @else
+                                                    <button type="button" class="btn btn-success" onclick="changeLivro('{{$i->nome}}')" data-dismiss="modal">Selecionar</button>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

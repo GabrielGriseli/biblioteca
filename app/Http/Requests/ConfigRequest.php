@@ -24,8 +24,9 @@ class ConfigRequest extends FormRequest
     public function rules()
     {
         return [
-            'num_renov' => 'required',
             'num_dias' => 'required',
+            'num_renov' => 'required',
+            'num_livros' => 'required',
             'multa' => 'required',
         ];
     }

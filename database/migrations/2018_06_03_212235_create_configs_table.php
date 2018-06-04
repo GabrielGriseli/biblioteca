@@ -15,8 +15,9 @@ class CreateConfigsTable extends Migration
     {
         Schema::create('configs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('num_renov');
             $table->integer('num_dias');
+            $table->integer('num_renov');
+            $table->integer('num_livros');
             $table->double('multa', 8, 2);
             $table->timestamps();
         });

@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->integer('admin')->default(0);
+            $table->double('multa', 8, 2)->default(0);
+            $table->integer('num_livros')->default(0);
         });
     }
 

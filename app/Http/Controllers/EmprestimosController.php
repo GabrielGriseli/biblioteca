@@ -17,20 +17,27 @@ class EmprestimosController extends Controller
     public function create(){
         $usuarios = User::all();
         $livros = Livro::all();
+        $config = Config::find(1)->num_livros;
 
-        return view('emprestimos.create', ['usuario'=> '', 'usuarios'=>$usuarios, 'livros'=>$livros]);
+        return view('emprestimos.create', ['usuario'=> '', 'usuarios'=>$usuarios, 'livros'=>$livros, 'config'=>$config]);
     }
 
     public function store(){
 
         $usuario = User::where('name', Request::input('usuario'))->first();
+        $usuario->num_livros++;
+        $usuario->save();
+
         $livro = Livro::where('nome', Request::input('livro'))->first();
+        $livro->status = 1;
+        $livro->save();
+
         $dias = Config::find(1)->num_dias;
         $devolucao = Carbon::now()->addDays($dias);
 
         $emprestimo = Emprestimo::create(array('id_usuario' => $usuario->id, 'id_livro' => $livro->id, 'devolucao'=> $devolucao));
-
         $data = $devolucao->toFormattedDateString();
+
         
         return view('emprestimos.comprovante', ['numero'=> $emprestimo->id, 'usuario'=>$usuario->name, 'livro'=>$livro->nome, 'data'=>$data]);
     }

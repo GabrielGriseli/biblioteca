@@ -23,6 +23,10 @@
                 {!! Form::text('num_renov', $config->num_renov, ['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
+                {!! Form::label('num_livros', 'Número de livros:') !!}
+                {!! Form::text('num_livros', $config->num_livros, ['class'=>'form-control']) !!}
+            </div>
+            <div class="form-group">
                 {!! Form::label('multa', 'Multa:') !!}
                 {!! Form::text('multa', $config->multa, ['class'=>'form-control']) !!}
             </div>
