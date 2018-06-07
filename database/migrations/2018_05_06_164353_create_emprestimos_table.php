@@ -18,6 +18,7 @@ class CreateEmprestimosTable extends Migration
             $table->integer('id_usuario');
             $table->integer('id_livro');
             $table->dateTime('devolucao');
+            $table->dateTime('efetiva_devolucao')->nullable();
             $table->timestamps();
         });
     }

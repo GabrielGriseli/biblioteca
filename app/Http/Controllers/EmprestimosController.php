@@ -41,4 +41,55 @@ class EmprestimosController extends Controller
         
         return view('emprestimos.comprovante', ['numero'=> $emprestimo->id, 'usuario'=>$usuario->name, 'livro'=>$livro->nome, 'data'=>$data]);
     }
+
+    public function index(){
+
+        $emprestimos = Emprestimo::all()->where('efetiva_devolucao', NULL);
+
+        $devolucoes = array();
+
+        foreach($emprestimos as $emprestimo){
+            $usuario = User::find($emprestimo->id_usuario)->name;
+            $livro = Livro::find($emprestimo->id_livro)->nome;
+            
+            $diferenca = Carbon::now()->diffInDays($emprestimo->devolucao, false) + 1;
+            if ($diferenca >= 0)
+                $multa = "-";
+            else{
+                $multa = -$diferenca * Config::find(1)->multa;
+            }
+
+            array_push($devolucoes, ["id"=>$emprestimo->id, "usuario"=>$usuario, "livro"=>$livro, "multa"=>$multa]);
+        }
+
+        return view('emprestimos.devolucao', ['devolucoes'=>$devolucoes]);
+    }
+
+    public function comprovante2($id){
+
+        $emprestimo = Emprestimo::find($id);
+        $emprestimo->efetiva_devolucao = Carbon::now();
+        $emprestimo->save();
+
+        $usuario = User::find($emprestimo->id_usuario);
+        $usuario->num_livros--;
+
+        $diferenca = Carbon::now()->diffInDays($emprestimo->devolucao, false) + 1;
+        if ($diferenca >= 0)
+            $multa = 0;
+        else{
+            $multa = -$diferenca * Config::find(1)->multa;
+        }
+        $usuario->multa += $multa;
+
+        $usuario->save();
+
+        $livro = Livro::find($emprestimo->id_livro);
+        $livro->status = 0;
+        $livro->save();
+        
+        $devolucao = Carbon::now()->toFormattedDateString();
+
+        return view('emprestimos.comprovante2', ["id"=>$id, "usuario"=>$usuario->name, "livro"=>$livro->nome, "data"=>$devolucao]);
+    }
 }

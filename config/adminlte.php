@@ -138,7 +138,7 @@ return [
         ],
         [
             'text' => 'Devolução',
-            'url'  => 'devolucao',
+            'url'  => 'emprestimos/index',
             'icon' => 'minus',
             'can' => 'gate-admin',
         ],

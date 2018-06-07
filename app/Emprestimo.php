@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Emprestimo extends Model
 {
-    protected $fillable = ['id_usuario', 'id_livro', 'devolucao'];
+    protected $fillable = ['id_usuario', 'id_livro', 'devolucao', 'efetiva_devolucao'];
 }
